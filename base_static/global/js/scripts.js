@@ -1,40 +1,18 @@
-(() => {
-  const buttonCloseMenu = document.querySelector(".button-close-menu");
-  const buttonShowMenu = document.querySelector(".button-show-menu");
-  const menuContainer = document.querySelector(".menu-container");
+// Menu mobile toggle
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
 
-  const buttonShowMenuVisibleClass = "button-show-menu-visible";
-  const menuHiddenClass = "menu-hidden";
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("active");
+  mainNav.classList.toggle("active");
+});
 
-  const closeMenu = () => {
-    buttonShowMenu.classList.add(buttonShowMenuVisibleClass);
-    menuContainer.classList.add(menuHiddenClass);
-  };
-
-  const showMenu = () => {
-    buttonShowMenu.classList.remove(buttonShowMenuVisibleClass);
-    menuContainer.classList.remove(menuHiddenClass);
-  };
-
-  if (buttonCloseMenu) {
-    buttonCloseMenu.removeEventListener("click", closeMenu);
-    buttonCloseMenu.addEventListener("click", closeMenu);
-  }
-
-  if (buttonShowMenu) {
-    buttonCloseMenu.removeEventListener("click", showMenu);
-    buttonShowMenu.addEventListener("click", showMenu);
-  }
-})();
-
-(() => {
-  const authorsLogoutLinks = document.querySelectorAll(".authors-logout-link");
-  const formLogout = document.querySelector(".form-logout");
-
-  for (const link of authorsLogoutLinks) {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      formLogout.submit();
-    });
-  }
-})();
+// Fechar menu ao clicar em um link
+document.querySelectorAll(".nav-link").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (window.innerWidth <= 768) {
+      menuToggle.classList.remove("active");
+      mainNav.classList.remove("active");
+    }
+  });
+});
