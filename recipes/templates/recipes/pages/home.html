@@ -1,0 +1,21 @@
+{% extends "global/base.html" %}
+
+{% block title %}Home |{% endblock title %}
+
+{% block content %}
+
+{% include "recipes/partials/message.html" %}
+
+    <header class="main-header-container">
+        <div class="main-header container">
+            <h1>
+                <a href="/">
+                    <span>
+                        Recipes {{ name }}
+                    </span>
+                </a>
+            </h1>
+        </div>
+        
+    </header>
+{% endblock content %}
